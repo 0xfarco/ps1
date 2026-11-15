@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_simple.c                                      :+:      :+:    :+:   */
+/*   ops_rotate_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: login <login@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fcholakk <fcholakk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/10 12:00:00 by login             #+#    #+#             */
-/*   Updated: 2026/11/10 12:00:00 by login            ###   ########.fr       */
+/*   Created: 2026/11/11 08:41:58 by fcholakk          #+#    #+#             */
+/*   Updated: 2026/11/12 12:48:05 by fcholakk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
-void	selection_sort(t_ctx *c)
+void	op_ra(t_ctx *c)
 {
-	if (c->a.size < 2)
-		return ;
-	while (c->a.size > 0)
-	{
-		a_to_top(c, min_index(&c->a));
-		op_pb(c);
-	}
-	while (c->b.size > 0)
-		op_pa(c);
+	stack_rotate(&c->a);
+}
+
+void	op_rb(t_ctx *c)
+{
+	stack_rotate(&c->b);
+}
+
+void	op_rr(t_ctx *c)
+{
+	stack_rotate(&c->a);
+	stack_rotate(&c->b);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcholakk <fcholakk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/10 12:00:00 by login             #+#    #+#             */
-/*   Updated: 2026/11/10 09:01:42 by fcholakk         ###   ########.fr       */
+/*   Created: 2026/11/11 08:42:41 by fcholakk          #+#    #+#             */
+/*   Updated: 2026/11/11 14:52:59 by fcholakk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	run_strategy(t_ctx *c, int strategy, float disorder)
 	if (strategy == S_SIMPLE)
 		selection_sort(c);
 	else if (strategy == S_MEDIUM)
-		chunk_based_sort(c);
+		chunk_sort(c);
 	else if (strategy == S_COMPLEX)
 		lsd_radix_sort(c);
 	else if (disorder < LOW_DISORDER)

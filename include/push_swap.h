@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fcholakk <fcholakk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/10 08:54:19 by fcholakk          #+#    #+#             */
-/*   Updated: 2026/11/10 09:02:15 by fcholakk         ###   ########.fr       */
+/*   Created: 2026/11/11 08:41:32 by fcholakk          #+#    #+#             */
+/*   Updated: 2026/11/11 09:26:36 by fcholakk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define LOW_DISORDER 0.2
 # define MID_DISORDER 0.5
 
-enum		e_op
+enum	e_op
 {
 	OP_SA,
 	OP_SB,
@@ -44,7 +44,7 @@ enum		e_op
 	OP_COUNT
 };
 
-enum		e_strategy
+enum	e_strategy
 {
 	S_ADAPTIVE,
 	S_SIMPLE,
@@ -52,7 +52,7 @@ enum		e_strategy
 	S_COMPLEX
 };
 
-enum		e_flag
+enum	e_flag
 {
 	F_NONE,
 	F_SIMPLE,
@@ -66,7 +66,7 @@ typedef struct s_stack
 {
 	int		*data;
 	int		size;
-}			t_stack;
+}	t_stack;
 
 typedef struct s_ctx
 {
@@ -74,26 +74,27 @@ typedef struct s_ctx
 	t_stack	b;
 	size_t	cnt[OP_COUNT];
 	int		pending;
-}			t_ctx;
+}	t_ctx;
 
 typedef struct s_opts
 {
 	int		strategy;
 	int		bench;
-}			t_opts;
+}	t_opts;
 
 /* stack.c / stack_ops.c / stack_utils.c */
-int			stack_init(t_stack *s, int cap);
+int		stack_init(t_stack *s, int cap);
 void		stack_push(t_stack *s, int v);
-int			stack_pop(t_stack *s);
-int			stack_top(t_stack *s);
+int		stack_pop(t_stack *s);
+int		stack_top(t_stack *s);
 void		stack_swap(t_stack *s);
 void		stack_rotate(t_stack *s);
 void		stack_rrotate(t_stack *s);
 void		stack_reverse(t_stack *s);
-int			min_index(t_stack *s);
-int			max_index(t_stack *s);
+int		min_index(t_stack *s);
+int		max_index(t_stack *s);
 float		compute_disorder(t_stack *s);
+void        stack_print(t_ctx *c);
 
 /* ctx.c */
 void		ctx_init(t_ctx *c, int cap);
@@ -131,9 +132,9 @@ void		ranks_out(t_stack *a, int *sorted);
 
 /* sorting strategies */
 void		selection_sort(t_ctx *c);
-void		chunk_based_sort(t_ctx *c);
 void		lsd_radix_sort(t_ctx *c);
 void		range_window_sort(t_ctx *c);
+void        chunk_sort(t_ctx *c);
 
 /* parsing */
 int			is_space(char c);
