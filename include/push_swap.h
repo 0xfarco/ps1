@@ -6,7 +6,7 @@
 /*   By: fcholakk <fcholakk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 08:41:32 by fcholakk          #+#    #+#             */
-/*   Updated: 2026/11/11 09:26:36 by fcholakk         ###   ########.fr       */
+/*   Updated: 2026/11/16 12:52:20 by fcholakk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-
-# ifndef WINDOW_MUL
-#  define WINDOW_MUL 20
-# endif
-
-# ifndef CHUNK_MUL
-#  define CHUNK_MUL 25
-# endif
+# include <limits.h>
 
 # define LOW_DISORDER 0.2
 # define MID_DISORDER 0.5
@@ -83,18 +76,18 @@ typedef struct s_opts
 }	t_opts;
 
 /* stack.c / stack_ops.c / stack_utils.c */
-int		stack_init(t_stack *s, int cap);
+int			stack_init(t_stack *s, int cap);
 void		stack_push(t_stack *s, int v);
-int		stack_pop(t_stack *s);
-int		stack_top(t_stack *s);
+int			stack_pop(t_stack *s);
+int			stack_top(t_stack *s);
 void		stack_swap(t_stack *s);
 void		stack_rotate(t_stack *s);
 void		stack_rrotate(t_stack *s);
 void		stack_reverse(t_stack *s);
-int		min_index(t_stack *s);
-int		max_index(t_stack *s);
+int			min_index(t_stack *s);
+int			max_index(t_stack *s);
 float		compute_disorder(t_stack *s);
-void        stack_print(t_ctx *c);
+void		stack_print(t_ctx *c);
 
 /* ctx.c */
 void		ctx_init(t_ctx *c, int cap);
