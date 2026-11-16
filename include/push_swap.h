@@ -6,7 +6,7 @@
 /*   By: fcholakk <fcholakk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 08:41:32 by fcholakk          #+#    #+#             */
-/*   Updated: 2026/11/16 12:52:20 by fcholakk         ###   ########.fr       */
+/*   Updated: 2026/11/16 12:58:20 by fcholakk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,9 +126,7 @@ void		ranks_out(t_stack *a, int *sorted);
 /* sorting strategies */
 void		selection_sort(t_ctx *c);
 void		lsd_radix_sort(t_ctx *c);
-void		range_window_sort(t_ctx *c);
 void		chunk_sort(t_ctx *c);
-void		insertion_sort(t_ctx *c);
 void		sort_small(t_ctx *c);
 
 /* parsing */
