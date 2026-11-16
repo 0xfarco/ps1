@@ -29,7 +29,9 @@ const char	*strategy_name(int strategy, float disorder)
 
 void	run_strategy(t_ctx *c, int strategy, float disorder)
 {
-	if (strategy == S_SIMPLE)
+	if (c->a.size <= 5)
+		sort_small(c);
+	else if (strategy == S_SIMPLE)
 		selection_sort(c);
 	else if (strategy == S_MEDIUM)
 		chunk_sort(c);
@@ -38,7 +40,7 @@ void	run_strategy(t_ctx *c, int strategy, float disorder)
 	else if (disorder < LOW_DISORDER)
 		selection_sort(c);
 	else if (disorder < MID_DISORDER)
-		range_window_sort(c);
+		chunk_sort(c);
 	else
 		lsd_radix_sort(c);
 }

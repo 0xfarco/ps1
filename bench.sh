@@ -1,3 +1,5 @@
+#!/bin/bash
+
 for i in $(seq 1 700); do
     ARG=$(shuf -i 1-100000 -n 500 | tr '\n' ' ')
 

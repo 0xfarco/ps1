@@ -134,7 +134,9 @@ void		ranks_out(t_stack *a, int *sorted);
 void		selection_sort(t_ctx *c);
 void		lsd_radix_sort(t_ctx *c);
 void		range_window_sort(t_ctx *c);
-void        chunk_sort(t_ctx *c);
+void		chunk_sort(t_ctx *c);
+void		insertion_sort(t_ctx *c);
+void		sort_small(t_ctx *c);
 
 /* parsing */
 int			is_space(char c);
