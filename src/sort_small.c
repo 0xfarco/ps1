@@ -6,32 +6,11 @@
 /*   By: fcholakk <fcholakk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 12:37:31 by fcholakk          #+#    #+#             */
-/*   Updated: 2026/11/16 12:48:09 by fcholakk         ###   ########.fr       */
+/*   Updated: 2026/11/17 19:21:14 by fcholakk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	get_min_idx(t_ctx *c)
-{
-	int	i;
-	int	idx;
-	int	val;
-
-	i = 0;
-	idx = -1;
-	val = INT_MAX;
-	while (i < c->a.size)
-	{
-		if (c->a.data[i] < val)
-		{
-			idx = i;
-			val = c->a.data[i];
-		}
-		i++;
-	}
-	return (idx);
-}
 
 static void	sort_three(t_ctx *c)
 {
@@ -65,7 +44,7 @@ static void	sort_four(t_ctx *c)
 {
 	int	idx;
 
-	idx = get_min_idx(c);
+	idx = min_index(&c->a);
 	a_to_top(c, idx);
 	op_pb(c);
 	sort_three(c);
@@ -76,10 +55,10 @@ static void	sort_five(t_ctx *c)
 {
 	int	idx;
 
-	idx = get_min_idx(c);
+	idx = min_index(&c->a);
 	a_to_top(c, idx);
 	op_pb(c);
-	idx = get_min_idx(c);
+	idx = min_index(&c->a);
 	a_to_top(c, idx);
 	op_pb(c);
 	sort_three(c);
@@ -89,6 +68,8 @@ static void	sort_five(t_ctx *c)
 
 void	sort_small(t_ctx *c)
 {
+	if (quick_fix(c))
+		return ;
 	if (c->a.size == 2)
 		op_sa(c);
 	else if (c->a.size == 3)

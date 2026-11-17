@@ -87,7 +87,6 @@ void		stack_reverse(t_stack *s);
 int			min_index(t_stack *s);
 int			max_index(t_stack *s);
 float		compute_disorder(t_stack *s);
-void		stack_print(t_ctx *c);
 
 /* ctx.c */
 void		ctx_init(t_ctx *c, int cap);
