@@ -120,26 +120,29 @@ Ranks:      3   0   2   1
 
 This makes every value small and non-negative, which radix sort and the window logic need. The original values are restored after sorting (`ranks_in` / `ranks_out` in `rank.c`).
 
-### 3. Simple — Minimum Extraction (`sort_simple.c`)
+### 3. Simple — Selection Sort (`sort_selection.c`)
 
 1. Find the smallest value in A.
 2. Bring it to the top with `ra` if it is in the upper half, or `rra` otherwise (the shorter way).
 3. Push it to B.
 4. Repeat until A is empty, then push everything back to A.
 
-**Why:** very easy to understand, and works well for small or almost sorted inputs. Finding the minimum each time costs a full scan, so it is O(n²).
+**Why:** Very easy to understand, and works well for small or almost sorted inputs. Finding the minimum each time costs a full scan, so it is O(n²).
 
-### 4. Medium — Range Window (`sort_window.c`)
+### 4. Medium — Chunk Based Sort (`sort_chunk.c`)
 
-1. Convert values to ranks.
-2. Use a window of size about `√n × WINDOW_MUL / 10`, starting at rank 0.
-3. Look at the top of A:
-   - If its rank is above the window, rotate A (`ra`).
-   - Otherwise push it to B. If its rank is in the lower part of the window (smaller than the number already pushed), also rotate B (`rb`) so small values sink to the bottom of B.
-4. Each push moves the window forward by one.
-5. When A is empty, repeatedly bring the largest value of B to the top and push it back to A.
+1. Normalize numbers: Convert all values into ranks from 0 to size - 1 using ranks_in(). This makes sorting independent of the original values.
+2. Calculate chunk size: Use the square root of the stack size (ft_sqrt(sz)) to determine how many elements each chunk should contain. This balances the number of sorting passes and stack operations.
+3. Divide into chunks: Split the ranked values into smaller ranges, defined by min_r and max_r.
+4. Push chunks to stack B: Check the top element of stack A:
+    - If its rank belongs to the current chunk, push it to stack B (pb).
+    - If its rank is in the lower half of the chunk, rotate stack B (rb) to keep smaller values closer to the bottom.
+    - Otherwise, rotate stack A (ra) to find the next element.
+5. Repeat: Move to the next rank range and continue until all elements have been transferred to stack B.
+6. Sort back to stack A: Use pull_back() to retrieve elements from stack B in descending order, placing them into stack A in ascending order.
+7. Restore original values: Use ranks_out() to replace ranks with their original numbers.
 
-**Why:** B ends up roughly sorted, so pulling the values back is cheap. This is much faster than Simple on larger inputs. O(n√n).
+**why:** Dividing numbers into smaller chunks reduces unnecessary rotations and helps organize elements before rebuilding the sorted stack, improving the efficiency of stack operations.
 
 ### 5. Complex — Binary LSD Radix Sort (`sort_radix.c`)
 
@@ -149,7 +152,7 @@ This makes every value small and non-negative, which radix sort and the window l
    - Go through every value in A: if the bit is `0`, push to B (`pb`); if it is `1`, rotate A (`ra`).
    - Push everything from B back to A.
 
-**Why:** no searching for minimum or maximum, the same simple pass for every bit, and predictable cost on large or very disordered inputs. O(n log n).
+**Why:** No searching for minimum or maximum, the same simple pass for every bit, and predictable cost on large or very disordered inputs. O(n log n).
 
 ### 6. Adaptive (`strategy.c`)
 
