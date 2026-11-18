@@ -37,7 +37,9 @@ void	run_strategy(t_ctx *c, int strategy, float disorder)
 		lsd_radix_sort(c);
 	else if (strategy == S_ADAPTIVE)
 	{
-		if (c->a.size <= 5)
+		if (quick_fix(c))
+			return ;
+		else if (c->a.size <= 5)
 			sort_small(c);
 		else if (disorder < LOW_DISORDER)
 			selection_sort(c);

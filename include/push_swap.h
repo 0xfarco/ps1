@@ -127,6 +127,7 @@ void		selection_sort(t_ctx *c);
 void		lsd_radix_sort(t_ctx *c);
 void		chunk_sort(t_ctx *c);
 void		sort_small(t_ctx *c);
+int			quick_fix(t_ctx *c);
 
 /* parsing */
 int			is_space(char c);

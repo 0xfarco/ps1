@@ -6,33 +6,11 @@
 /*   By: fcholakk <fcholakk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 12:37:31 by fcholakk          #+#    #+#             */
-/*   Updated: 2026/11/18 11:47:24 by fcholakk         ###   ########.fr       */
+/*   Updated: 2026/11/18 14:09:00 by fcholakk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	quick_fix(t_ctx *c)
-{
-	int	ok;
-
-	stack_swap(&c->a);
-	ok = is_sorted(&c->a, c->a.size);
-	stack_swap(&c->a);
-	if (ok)
-		return (op_sa(c), 1);
-	stack_rotate(&c->a);
-	ok = is_sorted(&c->a, c->a.size);
-	stack_rrotate(&c->a);
-	if (ok)
-		return (op_ra(c), 1);
-	stack_rrotate(&c->a);
-	ok = is_sorted(&c->a, c->a.size);
-	stack_rotate(&c->a);
-	if (ok)
-		return (op_rra(c), 1);
-	return (0);
-}
 
 static void	sort_three(t_ctx *c)
 {
@@ -100,4 +78,26 @@ void	sort_small(t_ctx *c)
 		sort_four(c);
 	else if (c->a.size == 5)
 		sort_five(c);
+}
+
+int	quick_fix(t_ctx *c)
+{
+	int	ok;
+
+	stack_swap(&c->a);
+	ok = is_sorted(&c->a, c->a.size);
+	stack_swap(&c->a);
+	if (ok)
+		return (op_sa(c), 1);
+	stack_rotate(&c->a);
+	ok = is_sorted(&c->a, c->a.size);
+	stack_rrotate(&c->a);
+	if (ok)
+		return (op_ra(c), 1);
+	stack_rrotate(&c->a);
+	ok = is_sorted(&c->a, c->a.size);
+	stack_rotate(&c->a);
+	if (ok)
+		return (op_rra(c), 1);
+	return (0);
 }
