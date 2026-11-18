@@ -177,18 +177,7 @@ bonus/                checker program
 
 ## Resources
 
-### AI Usage
-
-AI tools (ChatGPT and Claude) were used as learning assistants throughout this project.
-
-They helped with:
-
-- Understanding sorting algorithms and their complexity.
-- Learning range-window sorting and Radix Sort.
-- Understanding disorder calculation and adaptive algorithm selection.
-- Merging the two team members' versions into one codebase.
-- Reviewing code logic and debugging.
-- Improving code structure and meeting Norminette requirements.
-- Preparing test cases and understanding test results.
-
-AI was used for explanations, guidance, and code review. The implementation was developed and tested by the project members.
+- [Sorting Algorithms - Wikipedia](https://en.wikipedia.org/wiki/Sorting_algorithm)
+- [Selection Sort](https://www.geeksforgeeks.org/dsa/selection-sort-algorithm-2/)
+- [Radix Sort](https://www.geeksforgeeks.org/dsa/radix-sort/)
+- [Chunk-Based Sorting](https://satyadeepmaheshwari.medium.com/sorting-large-datasets-with-limited-memory-the-chunked-merge-sort-approach-318275275c81)

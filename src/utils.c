@@ -52,3 +52,17 @@ void	ft_putnbr_fd(size_t n, int fd)
 	ch = '0' + n % 10;
 	write(fd, &ch, 1);
 }
+
+int	is_sorted(t_stack	*s, int size)
+{
+	int	i;
+
+	i = size - 1;
+	while (i > 0)
+	{
+		if (s->data[i] > s->data[i - 1])
+			return (0);
+		i--;
+	}
+	return (1);
+}

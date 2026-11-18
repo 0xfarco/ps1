@@ -143,5 +143,6 @@ void		bench_print(float disorder, const char *name, t_ctx *c);
 double		ft_sqrt(double x);
 void		ft_putstr_fd(const char *s, int fd);
 void		ft_putnbr_fd(size_t n, int fd);
+int			is_sorted(t_stack	*s, int size);
 
 #endif
